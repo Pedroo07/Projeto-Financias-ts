@@ -5,7 +5,7 @@ type Props = {
   list: Item[]
 }
 
-export const TableArea = () => {
+export const TableArea = ({list}: Props) => {
   return (
     <C.Table>
       <thead>
@@ -15,10 +15,17 @@ export const TableArea = () => {
           <C.TableHeadColumn>Titulo</C.TableHeadColumn>
           <C.TableHeadColumn width={150}>Valor</C.TableHeadColumn>
         </tr>
+        </thead>
         <tbody>
-          { }
+          {list.map((item, index) => (
+            <tr key={index}>
+              <td></td>
+              <td>{item.category}</td>
+              <td>{item.title}</td>
+              <td>{item.value}</td>
+            </tr>
+          ))}
         </tbody>
-      </thead>
     </C.Table>
   )
 }

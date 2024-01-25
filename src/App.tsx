@@ -23,7 +23,7 @@ const App = () => {
       <C.Body>
         { }
         { }
-        <TableArea />
+        <TableArea list={filterList} />
       </C.Body>
     </C.Container>
   )
