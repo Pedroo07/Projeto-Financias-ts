@@ -1,5 +1,5 @@
 export type Item = {
-    data: Date
+    date: Date
     category: string
     title: string
     value: number
