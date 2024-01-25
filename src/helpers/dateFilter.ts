@@ -19,3 +19,17 @@ newList.push(list[i])
 }
 return newList
 }
+
+export const FormatDate = (date: Date): string => {
+    let year = date.getFullYear()
+    let month = date.getMonth() + 1
+    let day = date.getDate()
+    return `${AddZeroToDate(day)}/${AddZeroToDate(month)}/${year}`
+}
+ const AddZeroToDate = (n: number) : string => {
+    if(n < 10){
+      return `0${n}`
+    }else{
+      return `${n}`
+    }
+ }
