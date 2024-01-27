@@ -10,8 +10,8 @@ font-weight: bold;
 color: #888;
 margin-bottom: 5px;
 `
-export const Value = styled.div`
+export const Value = styled.div<{color: string}>`
 text-align: center;
 font-weight:bold;
-color: #000;
+color: ${props => props.color ?? '#000'};
 `
