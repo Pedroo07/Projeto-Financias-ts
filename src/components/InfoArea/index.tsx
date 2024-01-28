@@ -17,7 +17,7 @@ export const InfoArea = ({ currentMonth, onMonthChange, income, expense }: Props
     }
     const NextMonth = () => {
         let [year, month] = currentMonth.split('-')
-        let newDate = new Date(parseInt(year), parseInt(month) - 1, 1)
+        let newDate = new Date(parseInt(year), parseInt(month) -1, 1)
         newDate.setMonth(newDate.getMonth() + 1)
         onMonthChange(`${newDate.getFullYear()}-${newDate.getMonth() + 1}`)
     }

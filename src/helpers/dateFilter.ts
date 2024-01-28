@@ -23,7 +23,7 @@ export const filteredList = (list: Item[], date: string): Item[] => {
 export const FormatDate = (date: Date): string => {
   let year = date.getFullYear()
   let month = date.getMonth() + 1
-  let day = date.getDate()
+  let day = date.getDate() + 1
   return `${AddZeroToDate(day)}/${AddZeroToDate(month)}/${year}`
 }
 const AddZeroToDate = (n: number): string => n < 10 ? `0${n}` : `${n}`
