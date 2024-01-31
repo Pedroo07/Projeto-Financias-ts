@@ -14,27 +14,26 @@ const App = () => {
   const [filterList, setFilterList] = useState<Item[]>([])
   const [currentMonth, setCurrentMonth] = useState(getCurrentMonth())
   const [income, setIncome] = useState(0)
-  const [expense,setExpense] = useState(0)
+  const [expense, setExpense] = useState(0)
   useEffect(() => {
     setFilterList(filteredList(list, currentMonth))
   }, [list, currentMonth])
 
-  useEffect(()=>{
+  useEffect(() => {
     let incomeCount = 0
     let expenseCount = 0
-    for(const item of filterList){
-      const {category, value} = item
-      const {expense} = categories[category]
-      if(expense){
+    for (const item of filterList) {
+      const { category, value } = item
+      const { expense } = categories[category]
+      if (expense) {
         expenseCount += value
-      }else{
+      } else {
         incomeCount += value
       }
     }
     setIncome(incomeCount)
     setExpense(expenseCount)
-
-  },[filterList])
+  }, [filterList])
 
 
   const handleMonth = (newMonth: string) => {
@@ -44,7 +43,12 @@ const App = () => {
     let newList = [...list]
     newList.push(item)
     setList(newList)
-  } 
+  }
+  const handleDeleteItem = (index: number) => {
+    let newList = [...list]
+    newList.splice(index, 1)
+    setList(newList)
+  }
   return (
     <C.Container>
       <C.Header>
@@ -52,13 +56,13 @@ const App = () => {
       </C.Header>
       <C.Body>
         <InfoArea
-        onMonthChange={handleMonth}
-        currentMonth={currentMonth} 
-        income={income}
-        expense={expense}
+          onMonthChange={handleMonth}
+          currentMonth={currentMonth}
+          income={income}
+          expense={expense}
         />
-        <AddItem onAdd={handleAddItem}/>
-        <TableArea list={filterList} />
+        <AddItem onAdd={handleAddItem} />
+        <TableArea list={filterList} onDelete={handleDeleteItem} />
       </C.Body>
     </C.Container>
   )

@@ -5,9 +5,10 @@ import { categories } from '../../data/categories'
 
 type Props = {
     item: Item
+    onDelete: () => void
 }
 
-export const TableItem = ({ item }: Props) => {
+export const TableItem = ({ item, onDelete }: Props) => {
 
     return (
         <C.TableLine>
@@ -23,6 +24,8 @@ export const TableItem = ({ item }: Props) => {
                 R${item.value}
                 </C.Value>
                </C.TableColumn>
+               <C.TableColumn> 
+                <button onClick={() => onDelete()}>➖</button> </C.TableColumn>
         </C.TableLine>
     )
 }

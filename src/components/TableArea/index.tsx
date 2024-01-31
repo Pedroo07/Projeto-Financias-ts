@@ -4,9 +4,10 @@ import { TableItem } from '../TableItem/index'
 
 type Props = {
   list: Item[]
+  onDelete: (index: number) => void
 }
 
-export const TableArea = ({list}: Props) => {
+export const TableArea = ({ list, onDelete }: Props) => {
   return (
     <C.Table>
       <thead>
@@ -16,12 +17,12 @@ export const TableArea = ({list}: Props) => {
           <C.TableHeadColumn>Titulo</C.TableHeadColumn>
           <C.TableHeadColumn width={150}>Valor</C.TableHeadColumn>
         </tr>
-        </thead>
-        <tbody>
-          {list.map((item, index) => (
-            <TableItem key={index} item={item}/>
-          ))}
-        </tbody>
+      </thead>
+      <tbody>
+        {list.map((item, index) => (
+          <TableItem key={index} item={item} onDelete={() => onDelete(index)}/>
+        ))}
+      </tbody>
     </C.Table>
   )
 }
